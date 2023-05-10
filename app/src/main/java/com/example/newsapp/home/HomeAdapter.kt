@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.newsapp.databinding.ItemHomeBinding
 import com.example.newsapp.model.News
 
@@ -25,8 +26,10 @@ class HomeAdapter : ListAdapter<News, HomeAdapter.NewsViewHolder>(NewsDiffUtil()
 
         fun bind(news: News) {
             with(binding) {
-//                newsIv. GLide ekle
+                Glide.with(root.context).load(news.imageUrl).centerCrop().into(newsIv)
+
                 newsTitleTv.text = news.title
+
             }
         }
     }
