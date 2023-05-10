@@ -31,7 +31,8 @@ fun ApiNews.toNews(): List<News> {
             News(
                 id = it.id,
                 title = it.title ?: "DEFAULT TITLE",
-                imageUrl = it.urlToImage ?: "https://www.google.com/"
+                imageUrl = it.urlToImage ?: "https://www.google.com/",
+                url = it.url ?: "https://www.google.com/"
             )
         )
     }

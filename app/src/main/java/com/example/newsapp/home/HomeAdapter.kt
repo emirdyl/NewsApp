@@ -1,5 +1,7 @@
 package com.example.newsapp.home
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -27,9 +29,11 @@ class HomeAdapter : ListAdapter<News, HomeAdapter.NewsViewHolder>(NewsDiffUtil()
         fun bind(news: News) {
             with(binding) {
                 Glide.with(root.context).load(news.imageUrl).centerCrop().into(newsIv)
-
                 newsTitleTv.text = news.title
-
+                root.setOnClickListener {
+                    val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(news.url))
+                    root.context.startActivity(urlIntent)
+                }
             }
         }
     }
